@@ -153,7 +153,7 @@ function setGreetingText() {
   var greetingData = {
     setting_type: "greeting",
     greeting:{
-      text:"Hi {{user_first_name}}, welcome! You can ask for Google Analytics stats about your website!";
+      text:"Hi {{user_first_name}}, welcome! You can ask for Google Analytics stats about your website!"
     }
   };
   createGreetingApi(greetingData);
