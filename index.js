@@ -26,7 +26,7 @@ restService.get("/", function (req, res) {
   console.log("hook request");
   try {
       if (req) {
-        if(req.qtype == "newusers"){
+        if(req.query.qtype == "newusers"){
           report = new Report({"username":"jessegao12@gmail.com", "password":"happyman"});
           newUsersFind(req, function(result) {
                      //callback is ultimately to return Messenger appropriate responses formatted correctly
