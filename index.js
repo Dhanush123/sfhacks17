@@ -27,10 +27,6 @@ restService.get("/", function(req, res) {
     try {
         if (req) {
             if (req.query.qtype == "newusers") {
-                report = new Report({
-                    "username": "jessegao12@gmail.com",
-                    "password": "happyman"
-                });
                 newUsersFind(req, function(result) {
                     //callback is ultimately to return Messenger appropriate responses formatted correctly
                     return res.json({
@@ -65,4 +61,8 @@ function newUsersFind(req, callback) {
 
 restService.listen((process.env.PORT || 8000), function() {
     console.log('Server listening');
+    report = new Report({
+        "username": "jessegao12@gmail.com",
+        "password": "happyman"
+    });
 });
