@@ -52,7 +52,7 @@ restService.get("/", function(req, res) {
             }
             else if (req.query.qtype == "avgsessdur") {
                 numAvgSessDurFind(req, function(result) {
-                  var msg = "Your site's average session duration is: " + avgSessDur + ".";
+                  var msg = "Your site's average session duration is: " + avgSessDur + " seconds.";
                    console.log("in callback4??? " + msg);
 
                     //callback is ultimately to return Messenger appropriate responses formatted correctly
@@ -147,6 +147,16 @@ function numAvgSessDurFind(req, callback){
     console.log("avgSessionDuration: "+numNewUsers);
     callback();
   });
+}
+
+function setGreetingText() {
+  var greetingData = {
+    setting_type: "greeting",
+    greeting:{
+      text:"Hi {{user_first_name}}, welcome! You can ask for Google Analytics stats about your website!";
+    }
+  };
+  createGreetingApi(greetingData);
 }
 
 restService.listen((process.env.PORT || 8000), function() {
