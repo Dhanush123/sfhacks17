@@ -68,10 +68,8 @@ function newUsersFind(req, callback) {
          'start-date': '2017-03-18',
          'end-date': '2017-03-19',
          metrics: 'ga:newUsers,ga:sessions,ga:bounceRate,ga:sessionDuration,ga:pageviews',
-         access_token: 'ya29.GlwTBPfQhyOyVqQ4h9O_JERzrBi15QEQfeoGJ4M5dC_oQkV-LfQAt9nHmzUCYD_mAbJDuD6wX5YRzlKF1ccx5kezx7QZf7M872IHtKCtufl4dpBHA1NpX6HU6-MvpA' },
-      headers:
-       { 'postman-token': '175af880-f129-9e74-69eb-24761a442950',
-         'cache-control': 'no-cache' } };
+         access_token: 'ya29.GlwTBCInTGUqOiojn3NNR02Io8NUfzgKb5q2lllb3P_kqw6I64-ma5_xa_BPTtoOiXVkxio6A7Y9RgSIdYu4ohZVDRFvuQqB26AKH5-vI7QfiPc6oSbo6JBvBgnKzA' }
+        };
 
     request(options, function (error, response, body) {
       if (error) throw new Error(error);
