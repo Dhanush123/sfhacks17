@@ -72,8 +72,9 @@ function newUsersFind(req, callback) {
 
     request(options, function (error, response, body) {
       if (error) throw new Error(error);
-      console.log(body);
-      numNewUsers = body.totalsForAllResults["ga:newUsers"];
+      //console.log(body);
+      console.log(JSON.parse(body)["totalsForAllResults"]);
+      numNewUsers = JSON.parse(body)["totalsForAllResults"]["ga:newUsers"];
       callback();
     });
 }
