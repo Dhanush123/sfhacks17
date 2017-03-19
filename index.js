@@ -8,7 +8,7 @@ const Report = require('ga-report');
 const restService = express();
 restService.use(bodyParser.json());
 
-var report = new Report({'username':'jessegao12@gmail.com', 'password':'happyman'});
+// var report = new Report({'username':'jessegao12@gmail.com', 'password':'happyman'});
 // report.once('ready', function() {
 //   // ready to report
 // });
