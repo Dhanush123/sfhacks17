@@ -11,6 +11,7 @@ var numNewUsers = 0;
 var numSessions = 0;
 var numPageViews = 0;
 var avgSessDur = 0;
+var avgPageDur = 0;
 var att = 'ya29.GlwTBCInTGUqOiojn3NNR02Io8NUfzgKb5q2lllb3P_kqw6I64-ma5_xa_BPTtoOiXVkxio6A7Y9RgSIdYu4ohZVDRFvuQqB26AKH5-vI7QfiPc6oSbo6JBvBgnKzA';
 
 restService.get("/", function(req, res) {
@@ -54,6 +55,17 @@ restService.get("/", function(req, res) {
                 numAvgSessDurFind(req, function(result) {
                   var msg = "Your site's average session duration is: " + avgSessDur + " seconds.";
                    console.log("in callback4??? " + msg);
+
+                    //callback is ultimately to return Messenger appropriate responses formatted correctly
+                    return res.json({
+                        message: msg
+                    });
+                });
+            }
+            else if (req.query.qtype == "avgpagedur") {
+                numAvgPageDurFind(req, function(result) {
+                  var msg = "The average time a user stays on a page on your site is: " + avgPageDur + " seconds.";
+                   console.log("in callback5??? " + msg);
 
                     //callback is ultimately to return Messenger appropriate responses formatted correctly
                     return res.json({
@@ -145,6 +157,25 @@ function numAvgSessDurFind(req, callback){
     console.log(JSON.parse(body)["totalsForAllResults"]);
     numNewUsers = JSON.parse(body)["totalsForAllResults"]["ga:avgSessionDuration"];
     console.log("avgSessionDuration: "+numNewUsers);
+    callback();
+  });
+}
+
+function numAvgPageDurFind(req, callback){
+  var options = { method: 'GET',
+  url: 'https://www.googleapis.com/analytics/v3/data/ga',
+  qs:
+  { ids: 'ga:143226565',
+   'start-date': '2017-03-18',
+   'end-date': '2017-03-19',
+   metrics: 'ga:newUsers,ga:sessions,ga:bounces,ga:avgSessionDuration,ga:organicSearches,ga:pageviews,ga:avgTimeOnPage',
+   access_token: att }
+  };
+  request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+    console.log(JSON.parse(body)["totalsForAllResults"]);
+    numNewUsers = JSON.parse(body)["totalsForAllResults"]["ga:avgTimeOnPage"];
+    console.log("avgTimeOnPage: "+numNewUsers);
     callback();
   });
 }
