@@ -28,10 +28,12 @@ restService.get("/", function(req, res) {
         if (req) {
             if (req.query.qtype == "newusers") {
                 newUsersFind(req, function(result) {
-                   console.log("in callback???");
+                  var msg = "You have " + numNewUsers + " new user(s)!";
+                   console.log("in callback??? " + msg);
+
                     //callback is ultimately to return Messenger appropriate responses formatted correctly
                     return res.json({
-                        message: "You have " + numNewUsers + " new user(s)!"
+                        message: msg
                     });
                 });
             }
