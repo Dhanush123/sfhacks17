@@ -10,10 +10,6 @@ restService.use(bodyParser.json());
 
 var report;
 
-report.once('ready', function() {
-  console.log("authenticated now!!!!");
-});
-
 var numNewUsers = 0;
 
 var options = {
@@ -28,6 +24,9 @@ restService.get("/", function (req, res) {
   try {
       if (req) {
         report = new Report({'username':'jessegao12@gmail.com', 'password':'happyman'});
+        report.once('ready', function() {
+          console.log("authenticated now!!!!");
+        });
         if(req.qtype == "newusers"){
           newUsersFind(req, function(result) {
                      //callback is ultimately to return Messenger appropriate responses formatted correctly
