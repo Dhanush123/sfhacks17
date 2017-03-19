@@ -9,6 +9,7 @@ restService.use(bodyParser.json());
 
 var numNewUsers = 0;
 var numSessions = 0;
+var numPageViews = 0;
 var att = 'ya29.GlwTBCInTGUqOiojn3NNR02Io8NUfzgKb5q2lllb3P_kqw6I64-ma5_xa_BPTtoOiXVkxio6A7Y9RgSIdYu4ohZVDRFvuQqB26AKH5-vI7QfiPc6oSbo6JBvBgnKzA';
 
 restService.get("/", function(req, res) {
@@ -30,6 +31,17 @@ restService.get("/", function(req, res) {
                 numSessionsFind(req, function(result) {
                   var msg = "You have " + numSessions + " total sessions!";
                    console.log("in callback2??? " + msg);
+
+                    //callback is ultimately to return Messenger appropriate responses formatted correctly
+                    return res.json({
+                        message: msg
+                    });
+                });
+            }
+            else if (req.query.qtype == "numpageviews") {
+                numSessionsFind(req, function(result) {
+                  var msg = "You have " + numPageViews + " total page views!";
+                   console.log("in callback3??? " + msg);
 
                     //callback is ultimately to return Messenger appropriate responses formatted correctly
                     return res.json({
@@ -83,6 +95,25 @@ function numSessionsFind(req, callback) {
       console.log(JSON.parse(body)["totalsForAllResults"]);
       numNewUsers = JSON.parse(body)["totalsForAllResults"]["ga:sessions"];
       console.log("numSessionsFind: "+numNewUsers);
+      callback();
+    });
+}
+
+function numPageViewsFind(req, callback) {
+    var options = { method: 'GET',
+    url: 'https://www.googleapis.com/analytics/v3/data/ga',
+    qs:
+    { ids: 'ga:143226565',
+     'start-date': '2017-03-18',
+     'end-date': '2017-03-19',
+     metrics: 'ga:newUsers,ga:sessions,ga:bounces,ga:avgSessionDuration,ga:organicSearches,ga:pageviews,ga:avgTimeOnPage',
+     access_token: att }
+    };
+    request(options, function (error, response, body) {
+      if (error) throw new Error(error);
+      console.log(JSON.parse(body)["totalsForAllResults"]);
+      numNewUsers = JSON.parse(body)["totalsForAllResults"]["ga:pageviews"];
+      console.log("numPageViewsFind: "+numNewUsers);
       callback();
     });
 }
