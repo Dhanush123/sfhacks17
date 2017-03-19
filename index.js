@@ -3,7 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
-const report = require('ga-report');
+const Report = require('ga-report');
 
 const restService = express();
 restService.use(bodyParser.json());
