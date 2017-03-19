@@ -8,7 +8,7 @@ const Report = require('ga-report');
 const restService = express();
 restService.use(bodyParser.json());
 
-var report;
+// var report;
 
 var numNewUsers = 0;
 
@@ -23,7 +23,7 @@ restService.get("/", function (req, res) {
   console.log("hook request");
   try {
       if (req) {
-        report = new Report({'username':'jessegao12@gmail.com', 'password':'happyman'});
+        // report = new Report({'username':'jessegao12@gmail.com', 'password':'happyman'});
         // report.once('ready', function() {
         //   console.log("authenticated now!!!!");
         // });
