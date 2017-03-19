@@ -58,7 +58,7 @@ function newUsersFind(req,callback){
     console.log("inside callback of nUF");
     if (err) console.error(err);
     console.log(data);
-    numNewUsers = data.totalsForAllResults["ga:newUsers"];
+  //  numNewUsers = data.totalsForAllResults["ga:newUsers"];
     callback();
   });
 }
