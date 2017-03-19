@@ -28,6 +28,7 @@ restService.get("/", function(req, res) {
         if (req) {
             if (req.query.qtype == "newusers") {
                 newUsersFind(req, function(result) {
+                   console.log("in callback???");
                     //callback is ultimately to return Messenger appropriate responses formatted correctly
                     return res.json({
                         message: "You have " + numNewUsers + " new user(s)!"
@@ -75,6 +76,7 @@ function newUsersFind(req, callback) {
       //console.log(body);
       console.log(JSON.parse(body)["totalsForAllResults"]);
       numNewUsers = JSON.parse(body)["totalsForAllResults"]["ga:newUsers"];
+      console.log("numNewUsers: "+numNewUsers);
       callback();
     });
 }
