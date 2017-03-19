@@ -28,12 +28,12 @@ restService.get("/", function (req, res) {
         //   console.log("authenticated now!!!!");
         // });
         if(req.qtype == "newusers"){
-          newUsersFind(req, function(result) {
-                     //callback is ultimately to return Messenger appropriate responses formatted correctly
-                       return res.json({
-                         message: "You have " + numNewUsers + " new user(s)!"
-                       });
-                   });
+          // newUsersFind(req, function(result) {
+          //            //callback is ultimately to return Messenger appropriate responses formatted correctly
+          //              return res.json({
+          //                message: "You have " + numNewUsers + " new user(s)!"
+          //              });
+          //          });
         }
       }
   }
