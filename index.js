@@ -12,7 +12,7 @@ var numSessions = 0;
 var numPageViews = 0;
 var avgSessDur = 0;
 var avgPageDur = 0;
-var att = 'ya29.GlwTBCInTGUqOiojn3NNR02Io8NUfzgKb5q2lllb3P_kqw6I64-ma5_xa_BPTtoOiXVkxio6A7Y9RgSIdYu4ohZVDRFvuQqB26AKH5-vI7QfiPc6oSbo6JBvBgnKzA';
+var att = 'ya29.GlwTBNyOdlDDY9opsB-rEXI2iynXwMTLhVMBm44x0egUyLtGuHn3lfPSD7Ux-z2m62Bbi6n9EIOmRJtajJVtGdlPIfJg699RZ8bbcz6d4tg8_W9pnS2Ki2A8_DIwqA';
 
 restService.get("/", function(req, res) {
     console.log("hook request");
