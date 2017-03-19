@@ -49,10 +49,10 @@ restService.get("/", function (req, res) {
 });
 
 function newUsersFind(req,callback){
-  report.get(options, function(err, data) {
-    if (err) console.error(err);
-    console.log(data);
-    numNewUsers = data.totalsForAllResults["ga:newUsers"];
-    callback();
-  });
+  // report.get(options, function(err, data) {
+  //   if (err) console.error(err);
+  //   console.log(data);
+  //   numNewUsers = data.totalsForAllResults["ga:newUsers"];
+  //   callback();
+  // });
 }
