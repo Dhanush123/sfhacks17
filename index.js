@@ -62,7 +62,7 @@ function newUsersFind(req, callback) {
 restService.listen((process.env.PORT || 8000), function() {
     console.log('Server listening');
     report = new Report({
-        "username": "jessegao12@gmail.com",
+        "username": "jessegao",
         "password": "happyman"
     });
 });
