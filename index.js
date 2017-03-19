@@ -22,12 +22,14 @@ var options = {
   'metrics': 'ga:organicSearches,ga:percentNewSessions,ga:sessions,ga:avgSessionDuration,ga:newUsers,ga:1dayUsers,ga:30dayUsers,ga:7dayUsers,ga:pageviews'
 };
 
+var report;
+
 restService.get("/", function (req, res) {
   console.log("hook request");
   try {
       if (req) {
-        var report = new Report({'username':'jessegao12@gmail.com', 'password':'happyman'});
         if(req.qtype == "newusers"){
+          report = new Report({'username':'jessegao12@gmail.com', 'password':'happyman'});
           newUsersFind(req, function(result) {
                      //callback is ultimately to return Messenger appropriate responses formatted correctly
                        return res.json({
