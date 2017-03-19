@@ -9,9 +9,9 @@ const restService = express();
 restService.use(bodyParser.json());
 
 var report = new Report({'username':'jessegao12@gmail.com', 'password':'happyman'});
-report.once('ready', function() {
-  // ready to report
-});
+// report.once('ready', function() {
+//   // ready to report
+// });
 
 var numNewUsers = 0;
 
@@ -26,6 +26,7 @@ restService.get("/", function (req, res) {
   console.log("hook request");
   try {
       if (req) {
+        var report = new Report({'username':'jessegao12@gmail.com', 'password':'happyman'});
         if(req.qtype == "newusers"){
           newUsersFind(req, function(result) {
                      //callback is ultimately to return Messenger appropriate responses formatted correctly
