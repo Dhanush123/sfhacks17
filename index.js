@@ -22,8 +22,6 @@ var options = {
   'metrics': 'ga:organicSearches,ga:percentNewSessions,ga:sessions,ga:avgSessionDuration,ga:newUsers,ga:1dayUsers,ga:30dayUsers,ga:7dayUsers,ga:pageviews'
 };
 
-var report;
-
 restService.get("/", function (req, res) {
   console.log("hook request");
   try {
