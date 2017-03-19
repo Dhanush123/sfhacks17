@@ -27,10 +27,12 @@ var report;
 restService.get("/", function (req, res) {
   console.log("hook request");
   try {
+      console.log("req " + req);
       if (req) {
         if(req.qtype == "newusers"){
           report = new Report({'username':'jessegao12@gmail.com', 'password':'happyman'});
           newUsersFind(req, function(result) {
+            console.log("inside callback");
                      //callback is ultimately to return Messenger appropriate responses formatted correctly
                        return res.json({
                          message: "You have " + numNewUsers + " new user(s)!"
@@ -51,7 +53,9 @@ restService.get("/", function (req, res) {
 });
 
 function newUsersFind(req,callback){
+  console.log("inside nUF method");
   report.get(options, function(err, data) {
+    console.log("inside callback of nUF");
     if (err) console.error(err);
     console.log(data);
     numNewUsers = data.totalsForAllResults["ga:newUsers"];
